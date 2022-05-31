@@ -1,0 +1,25 @@
+
+spring:
+  jpa:
+    database: postgresql
+  datasource:
+    platform: postgres
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: 
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+
+graphiql:
+  mapping: /graphiql
+  endpoint:
+    graphql: /graphql
+graphql:
+  servlet:
+    actuator-metrics: true
+
+

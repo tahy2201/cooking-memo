@@ -1,0 +1,20 @@
+
+
+type Recipe {
+    id: ID!
+    title: String
+    thumbnail: String
+    ingredients: String
+    process: String
+    ownerId: Int
+}
+
+type User {
+    id: ID!
+    name: String
+}
+
+type Query {
+    getRecipe(id: ID!): Recipe
+    getRecipes(ownerId: ID!): [Recipe]
+}
