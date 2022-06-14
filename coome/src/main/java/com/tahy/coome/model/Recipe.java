@@ -28,6 +28,9 @@ public class Recipe {
     @Column(name = "title")
     private String title;
 
+    @Column(name = "description")
+    private String description;
+
     @Column(name = "thumbnail")
     private String thumbnail;
 

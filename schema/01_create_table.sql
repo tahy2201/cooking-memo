@@ -3,6 +3,7 @@ CREATE TABLE recipes (
     id SERIAL NOT NULL,
     title varchar(255) not null,
     thumbnail varchar(255),
+    description varchar(255),
     ingredients varchar(255),
     process jsonb,
     owner_id BIGINT NOT NULL,
