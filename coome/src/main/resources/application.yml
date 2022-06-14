@@ -22,4 +22,6 @@ graphql:
   servlet:
     actuator-metrics: true
 
+coome:
+  assetS3BucketName: dev-coome-asset
 

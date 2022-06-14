@@ -11,5 +11,18 @@ services:
     environment:
       - POSTGRES_PASSWORD=SCRAM-SHA-256$$4096:CN/srUQaTkDjUqDnvTraww==$$j0wE/Je5UkGvSTKTsAHO1cEc/KS3zIAN5xk8muV/otA=:ncrh96GBV7fiZOu+jbJuZHh1SL2pvRLNakbm+ACitqk=
       - POSTGRES_INITDB_ARGS=--auth-host=scram-sha-256 --auth-local=scram-sha-256
+  minio:
+    image: minio/minio:latest
+    ports:
+      - 9090:9000
+      - 9001:9001
+    environment:
+      - MINIO_ACCESS_KEY=minioaccess
+      - MINIO_SECRET_KEY=miniosecret
+    command: server /data --console-address :9001
+    volumes:
+      - minio:/data
+
 volumes:
   db-store:
+  minio:
