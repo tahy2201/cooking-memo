@@ -14,8 +14,10 @@ yarn start
 ### backend
 
 ```shell
+export ASSET_S3_ACCESSKEY=minioaccess
+export ASSET_S3_SECRETKEY=miniosecret
 cd coome
-gradle bootRun
+./gradlew bootRun
 
 # 別のshellで
 gradle build --continuous
