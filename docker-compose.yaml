@@ -9,7 +9,7 @@ services:
     volumes:
       - db-store:/var/lib/postgresql/data
     environment:
-      - POSTGRES_PASSWORD=SCRAM-SHA-256$$4096:CN/srUQaTkDjUqDnvTraww==$$j0wE/Je5UkGvSTKTsAHO1cEc/KS3zIAN5xk8muV/otA=:ncrh96GBV7fiZOu+jbJuZHh1SL2pvRLNakbm+ACitqk=
+      - POSTGRES_PASSWORD=SCRAM-SHA-256$$4096:dhCP9yirLgv453WbDBnexg==$$ynY0Wz65qfWFs+Oa5Jr0G+nJvzkjwj2WI1Nm1yTuc/U=:gO3NoPhZb1P6IPKVbKu/Lxa0lsuofTPd1nbH6gg6KvA=
       - POSTGRES_INITDB_ARGS=--auth-host=scram-sha-256 --auth-local=scram-sha-256
   minio:
     image: minio/minio:latest
@@ -22,6 +22,14 @@ services:
     command: server /data --console-address :9001
     volumes:
       - minio:/data
+  backend:
+    build: ./coome
+    ports:
+      - 8080:8080
+    environment:
+      - SPRING_PROFILES_ACTIVE=test
+      - ASSET_S3_ACCESSKEY=minioaccess
+      - ASSET_S3_SECRETKEY=miniosecret
 
 volumes:
   db-store:
