@@ -2,17 +2,18 @@ package com.tahy.coome.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.tahy.coome.model.Recipe;
 import com.tahy.coome.repository.RecipeDao;
 import com.tahy.coome.repository.UserDao;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class RestDbtestController {
@@ -23,7 +24,6 @@ public class RestDbtestController {
 
     UserDao userDao;
 
-    @Autowired
     public RestDbtestController(
             RecipeDao recipeDao,
             UserDao userDao) {
@@ -37,6 +37,11 @@ public class RestDbtestController {
     public List<Recipe> getAllRescipes() {
         List<Recipe> recipes = recipeDao.findAll();
         return new ArrayList<>(recipes);
+    }
+
+    @GetMapping("/recipe/get/{id}")
+    public Recipe getRecipe(@PathVariable Integer id) {
+        return recipeDao.findById(id).orElse(null);
     }
 
     @GetMapping("/v3")

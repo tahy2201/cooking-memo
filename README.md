@@ -15,7 +15,7 @@ yarn start
 
 ```shell
 cd coome
-gradle bootRun
+gradle bootRun -Pargs="--spring.profiles.active=test --asset.s3.accessKey=minoaccess --asset.s3.secretKey=miniosecret"
 
 # 別のshellで
 gradle build --continuous
