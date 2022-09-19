@@ -1,6 +1,6 @@
 package com.tahy.coome.model;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,8 +22,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "recipes", schema = "public")
 @Data
+@Table(name = "recipes", schema = "public")
+@TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 public class Recipe {
 
     @Id
@@ -34,18 +41,23 @@ public class Recipe {
     @Column(name = "thumbnail")
     private String thumbnail;
 
-    @Column(name = "ingredients")
-    private String ingredients;
+    @Type(type = "jsonb")
+    @Column(name = "ingredients", columnDefinition = "json")
+    private JsonNode ingredients;
 
-    @Column(name = "process")
-    private String process;
+    @Type(type = "jsonb")
+    @Column(name = "process", columnDefinition = "json")
+    private JsonNode process;
+
+    @Column(name = "srcLink")
+    private String srcLink;
 
     @Column(name = "owner_id")
     private Integer ownerId;
 
     @Column(name = "create_date")
-    private Date createDate;
+    private Timestamp createDate;
 
     @Column(name = "update_date")
-    private Date updateDate;
+    private Timestamp updateDate;
 }

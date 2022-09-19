@@ -29,11 +29,14 @@ export const RecipePage: FC = () => {
 
   return (
     <div className="bg-lime-100">
+      {isEdit ? 
       <div className="w-full flex flex-row-reverse py-5 pr-5 gap-2">
         <Share />
         <Favorite />
-        {isEdit ? <Save onClick={setIsEdit.bind(this, false)} /> : <Edit onClick={setIsEdit.bind(this, true)} />}
-      </div>
+        <Save onClick={setIsEdit.bind(this, false)} /> </div>
+        : <Edit onClick={setIsEdit.bind(this, true)} />
+      }
+      
       <h1 className="pb-5 text-3xl">{recipe.title}</h1>
       <div className="flex flex-row text-center justify-center">
         <div className="bg-red-200 p-10">

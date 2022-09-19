@@ -32,17 +32,17 @@ public class RestDbtestController {
     }
 
     //
-    @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping("/")
-    public List<Recipe> getAllRescipes() {
-        List<Recipe> recipes = recipeDao.findAll();
-        return new ArrayList<>(recipes);
-    }
+    // @CrossOrigin(origins = "http://localhost:3000")
+    // @GetMapping("/")
+    // public List<Recipe> getAllRescipes() {
+    // List<Recipe> recipes = recipeDao.findAll();
+    // return new ArrayList<>(recipes);
+    // }
 
-    @GetMapping("/recipe/get/{id}")
-    public Recipe getRecipe(@PathVariable Integer id) {
-        return recipeDao.findById(id).orElse(null);
-    }
+    // @GetMapping("/recipe/get/{id}")
+    // public Recipe getRecipe(@PathVariable Integer id) {
+    // return recipeDao.findById(id).orElse(null);
+    // }
 
     @GetMapping("/v3")
     public List<Recipe> getAllRescipes2() {
