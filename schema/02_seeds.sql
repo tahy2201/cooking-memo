@@ -1,5 +1,5 @@
 INSERT INTO recipes 
-    (title, thumbnail, description, ingredients, process, src_link, owner_id, create_date, update_date)
+    (title, thumbnail, description, ingredients, process, src_link, owner_id, create_at, update_at)
 VALUES
 ('Pizza', 'pizza.jpg', 'オーソドックスなピザ', '[{"name":"トマト","amount":1, "unit": "個"}, {"name":"チーズ","amount":2,"unit":"枚"}, {"name":"塩","amount":3,"unit":"大さじ"}]', '["Put the dough in the oven",  "Bake for 20 minutes" ]', 'https://srclink/example', 1, '2022-01-01 00:00:00', '2020-01-03 00:00:00'),
 ('Pasta', 'pizza.jpg', 'コスパ重視なパスタ', '[{"name":"トマト","amount":1, "unit": "個"}, {"name":"チーズ","amount":2,"unit":"枚"}, {"name":"塩","amount":3,"unit":"大さじ"}]', '["Put the dough in the oven",  "Bake for 20 minutes" ]', 'https://srclink/example', 1, '2022-02-01 00:00:00', '2020-02-03 00:00:00'),
@@ -9,7 +9,7 @@ VALUES
 ;
 
 INSERT INTO users
-    (login_id, name, thumbnail, first_name, last_name, profile, create_date, update_date)
+    (login_id, name, thumbnail, first_name, last_name, profile, create_at, update_at)
 VALUES
 ('admin', 'th.jpeg', 'admin', 'admin_first', 'admin_last', 'admin_prof', '2020-01-01 00:00:00', '2020-01-01 00:00:00'),
 ('user', 'th.jpeg', 'user', 'user_first', 'user_last', 'user_prof', '2020-01-01 00:00:00', '2020-01-01 00:00:00')

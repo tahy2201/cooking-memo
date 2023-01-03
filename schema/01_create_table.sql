@@ -8,8 +8,8 @@ CREATE TABLE recipes (
     process jsonb,
     src_link varchar(255),
     owner_id BIGINT NOT NULL,
-    create_date timestamp not null,
-    update_date timestamp not null,
+    create_at timestamp not null,
+    update_at timestamp not null,
     primary key(id)
 );
 
@@ -21,8 +21,8 @@ CREATE TABLE users (
     first_name varchar(255),
     last_name varchar(255),
     profile varchar(3000),
-    create_date timestamp not null,
-    update_date timestamp not null,
+    create_at timestamp not null,
+    update_at timestamp not null,
     primary key(id)
 );
 

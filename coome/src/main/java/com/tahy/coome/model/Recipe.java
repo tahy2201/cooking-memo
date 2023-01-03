@@ -1,7 +1,5 @@
 package com.tahy.coome.model;
 
-import java.sql.Timestamp;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,19 +15,21 @@ import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Data
+@EqualsAndHashCode(callSuper = false)
 @Table(name = "recipes", schema = "public")
 @TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
-public class Recipe {
+public class Recipe extends TimeEntity {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "title")
@@ -54,10 +54,4 @@ public class Recipe {
 
     @Column(name = "owner_id")
     private Integer ownerId;
-
-    @Column(name = "create_date")
-    private Timestamp createDate;
-
-    @Column(name = "update_date")
-    private Timestamp updateDate;
 }
