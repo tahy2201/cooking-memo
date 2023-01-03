@@ -30,7 +30,7 @@ export const NewRecipe: FC = () => {
   const [srcLink, setSrcLink] = useState("");
 
   React.useEffect(() => {
-    axios.get("http://localhost:8080/csrf").then(function (res: any) {
+    axios.get("http://coome.com/api/test").then(function (res: any) {
       console.log(res);
       const xsrf = Cookies.get("_csrf");
       console.log(xsrf);
@@ -70,13 +70,13 @@ export const NewRecipe: FC = () => {
       process,
       srcLink
     );
-    const axiosPosta = axios.create({
-      xsrfHeaderName: "X-CSRF-Token",
-      withCredentials: true,
-    });
+    const axiosPosta = axios.create();
     axiosPosta
-      .post("http://localhost:8080/recipe/save", r)
-      .then(function (res: AxiosResponse<Recipe>) {})
+      .post("http://coome.com/api/recipe/save", {
+        userId: 1,
+        recipe: r
+      })
+      .then(function (res: AxiosResponse<Recipe>) { })
       .catch((e) => {
         console.log(e);
       });
@@ -102,7 +102,7 @@ export const NewRecipe: FC = () => {
       <div className="flex flex-row text-center justify-center">
         <div className="bg-red-200 p-10">
           <img
-            src="http://localhost:9090/dev-coome-asset/aaaa"
+            src="http://localhost:9090/dev-coome-asset/hamburger.png"
             width="300"
             className="border border-solid border-gray-700 "
           />
